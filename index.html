@@ -614,41 +614,38 @@
             <div class="form__row">
               <div class="form__group">
                 <label>Your Name *</label>
-                <input type="text" placeholder="e.g. Priya Sharma" required />
+                  <input id="f-name" type="text" placeholder="e.g. Priya Sharma" required />
               </div>
               <div class="form__group">
                 <label>Phone Number *</label>
-                <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+                <input id="f-phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
               </div>
             </div>
             <div class="form__row">
               <div class="form__group">
                 <label>Service Required *</label>
-                <select required>
+                <select id="f-service" required>
                   <option value="">Select a service…</option>
                   <option>Ladies Suit Stitching</option>
-                  <option>Blouse Designing & Stitching</option>
+                  <option>Blouse Designing &amp; Stitching</option>
                   <option>Lehenga Stitching</option>
-                  <option>Fitting & Alteration</option>
+                  <option>Fitting &amp; Alteration</option>
                   <option>Bridal Outfit</option>
                   <option>Other</option>
                 </select>
               </div>
               <div class="form__group">
                 <label>Email (optional)</label>
-                <input type="email" placeholder="you@email.com" />
+                <input id="f-email" type="email" placeholder="you@email.com" />
               </div>
             </div>
             <div class="form__group form__group--full">
               <label>Your Message</label>
-              <textarea rows="4" placeholder="Tell us about your outfit idea, occasion, or any questions…"></textarea>
+              <textarea id="f-message" rows="4" placeholder="Tell us about your outfit idea, occasion, or any questions…"></textarea>
             </div>
             <div class="form__submit-row">
-              <button type="submit" class="btn btn--primary btn--lg">Send Enquiry ✦</button>
-              <p class="form__note">We respond within 24 hours. You can also WhatsApp us directly!</p>
-            </div>
-            <div class="form__success" id="formSuccess">
-              ✅ Thank you! We'll get back to you very soon.
+              <button type="submit" class="btn btn--primary btn--lg">💬 Send via WhatsApp</button>
+              <p class="form__note">Clicking will open WhatsApp with your details pre-filled — just hit Send!</p>
             </div>
           </form>
         </div>

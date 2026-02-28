@@ -49,13 +49,30 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-/* ── Contact Form ───────────────────────── */
+/* ── Contact Form → WhatsApp ────────────── */
 function handleForm(e) {
   e.preventDefault();
-  const success = document.getElementById('formSuccess');
-  success.classList.add('show');
-  e.target.reset();
-  setTimeout(() => success.classList.remove('show'), 6000);
+
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const service = document.getElementById('f-service').value;
+  const email   = document.getElementById('f-email').value.trim();
+  const message = document.getElementById('f-message').value.trim();
+
+  // REPLACE with your WhatsApp number (91 + 10-digit number, no spaces or +)
+  const YOUR_WHATSAPP = '919990687859';
+
+  // Build a clean, readable WhatsApp message
+  let text = 'Hello Mahi Silai Studio! \n\n';
+  text += '*Name:* ' + name + '\n';
+  text += '*Phone:* ' + phone + '\n';
+  text += '*Service Required:* ' + service + '\n';
+  if (email)   text += '*Email:* ' + email + '\n';
+  if (message) text += '\n*Message:*\n' + message;
+  text += '\n\nPlease let me know the details. Thank you!';
+
+  const url = 'https://wa.me/' + YOUR_WHATSAPP + '?text=' + encodeURIComponent(text);
+  window.open(url, '_blank');
 }
 
 /* ── Scroll Animations ──────────────────── */
@@ -76,7 +93,7 @@ function initScrollAnimations() {
   elements.forEach((el, i) => {
     if (!el.classList.contains('visible')) {
       el.classList.add('anim-up');
-      el.style.transitionDelay = `${i * 0.06}s`;
+      el.style.transitionDelay = (i * 0.06) + 's';
       observer.observe(el);
     }
   });
@@ -85,6 +102,5 @@ function initScrollAnimations() {
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
-  // Trigger nav scroll state check
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
 });
