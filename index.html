@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahi Silai Studio – Bespoke Ladies Fashion</title>
+  <meta name="description" content="Mahi Silai Studio – Expert stitching, designing and fitting of ladies suits, blouses, lehengas and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+
+      <a class="nav__logo" onclick="showSection('home')">
+        <div class="nav__logo-icon">M</div>
+        <div class="nav__logo-text">
+          <span class="nav__logo-name">Mahi Silai Studio</span>
+          <span class="nav__logo-tagline">Bespoke Ladies Fashion</span>
+        </div>
+      </a>
+
+      <nav class="nav__links">
+        <a class="nav__link active" data-section="home"     onclick="showSection('home')">Home</a>
+        <a class="nav__link"        data-section="services" onclick="showSection('services')">Services</a>
+        <a class="nav__link"        data-section="gallery"  onclick="showSection('gallery')">Gallery</a>
+        <a class="nav__link"        data-section="contact"  onclick="showSection('contact')">Contact</a>
+      </nav>
+
+      <button class="nav__cta-btn" onclick="showSection('contact')">Book a Fitting</button>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a onclick="showSection('home');closeMobile()">Home</a>
+      <a onclick="showSection('services');closeMobile()">Services</a>
+      <a onclick="showSection('gallery');closeMobile()">Gallery</a>
+      <a onclick="showSection('contact');closeMobile()">Contact</a>
+      <a class="mobile-cta" onclick="showSection('contact');closeMobile()">Book a Fitting</a>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════
+       PAGE: HOME
+  ══════════════════════════════════ -->
+  <section class="page active" id="home">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero__bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__badge">✦ Since 2010 · Trusted by 5000+ Customers</div>
+        <h1 class="hero__title">
+          Your Dream Outfit,<br/>
+          <em>Perfectly Stitched.</em>
+        </h1>
+        <p class="hero__desc">
+          Bespoke stitching, designing & fitting for ladies — suits, blouses,
+          lehengas and more. Every stitch crafted with love, every fit made for you.
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" onclick="showSection('contact')">📍 Visit Our Studio</button>
+          <button class="btn btn--soft"    onclick="showSection('services')">Explore Services →</button>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><strong>5000+</strong><span>Happy Customers</span></div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat"><strong>15+</strong><span>Years Experience</span></div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat"><strong>100%</strong><span>Custom Fitted</span></div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__img-frame">
+          <div class="hero__img-placeholder">
+            <span>🧵</span>
+            <p>Store / Hero Image</p>
+            <small>Place <code>assets/hero.webp</code></small>
+          </div>
+          <img src="assets/hero.webp" alt="Mahi Silai Studio" onerror="this.style.display='none'" />
+          <div class="hero__img-badge">
+            <span>✦</span> Expert Tailoring
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker__track">
+        <span>Ladies Suits</span><span class="ticker__dot">✦</span>
+        <span>Blouse Stitching</span><span class="ticker__dot">✦</span>
+        <span>Lehenga Design</span><span class="ticker__dot">✦</span>
+        <span>Perfect Fitting</span><span class="ticker__dot">✦</span>
+        <span>Bridal Wear</span><span class="ticker__dot">✦</span>
+        <span>Custom Embroidery</span><span class="ticker__dot">✦</span>
+        <span>Anarkali Sets</span><span class="ticker__dot">✦</span>
+        <span>Salwar Kameez</span><span class="ticker__dot">✦</span>
+        <!-- repeat for seamless loop -->
+        <span>Ladies Suits</span><span class="ticker__dot">✦</span>
+        <span>Blouse Stitching</span><span class="ticker__dot">✦</span>
+        <span>Lehenga Design</span><span class="ticker__dot">✦</span>
+        <span>Perfect Fitting</span><span class="ticker__dot">✦</span>
+        <span>Bridal Wear</span><span class="ticker__dot">✦</span>
+        <span>Custom Embroidery</span><span class="ticker__dot">✦</span>
+        <span>Anarkali Sets</span><span class="ticker__dot">✦</span>
+        <span>Salwar Kameez</span><span class="ticker__dot">✦</span>
+      </div>
+    </div>
+
+    <!-- WHY US -->
+    <section class="section-block why">
+      <div class="container">
+        <div class="sec-header">
+          <p class="sec-eyebrow">Why Choose Us</p>
+          <h2>Crafted with Care,<br/><em>Designed for You</em></h2>
+          <p class="sec-sub">We don't just stitch clothes — we craft confidence.</p>
+        </div>
+        <div class="why__grid">
+          <div class="why__card">
+            <div class="why__icon why__icon--pink">✂️</div>
+            <h3>Precision Stitching</h3>
+            <p>Exact measurements, flawless seams, and perfect drape — every single time.</p>
+          </div>
+          <div class="why__card why__card--featured">
+            <div class="why__icon why__icon--white">👑</div>
+            <h3>Bridal Specialist</h3>
+            <p>Your wedding look is our masterpiece. From lehenga to blouse, we make it unforgettable.</p>
+          </div>
+          <div class="why__card">
+            <div class="why__icon why__icon--pink">🎨</div>
+            <h3>Custom Designs</h3>
+            <p>Bring your idea or pick from our portfolio — we bring every vision to life.</p>
+          </div>
+          <div class="why__card">
+            <div class="why__icon why__icon--pink">⚡</div>
+            <h3>On-Time Delivery</h3>
+            <p>We respect your time. Your outfit will be ready when promised, always.</p>
+          </div>
+          <div class="why__card why__card--featured why__card--magenta">
+            <div class="why__icon why__icon--white">💎</div>
+            <h3>Premium Quality</h3>
+            <p>Fine threads, quality fabrics and master craftsmanship in every garment we create.</p>
+          </div>
+          <div class="why__card">
+            <div class="why__icon why__icon--pink">🌸</div>
+            <h3>Personalised Fit</h3>
+            <p>Every body is unique. We tailor to your exact shape for maximum comfort and style.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK PREVIEW -->
+    <section class="section-block work-preview">
+      <div class="container">
+        <div class="sec-header">
+          <p class="sec-eyebrow">Our Creations</p>
+          <h2>A Glimpse of<br/><em>Our Work</em></h2>
+        </div>
+        <div class="work-preview__grid">
+          <div class="work-preview__item work-preview__item--tall" data-label="Designer Blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse1.jpeg</p></div>
+            <img src="assets/blouse1.jpeg" alt="Designer Blouse" onerror="this.style.display='none'" />
+          </div>
+          <div class="work-preview__item" data-label="Embroidered Blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse2.jpeg</p></div>
+            <img src="assets/blouse2.jpeg" alt="Embroidered Blouse" onerror="this.style.display='none'" />
+          </div>
+          <div class="work-preview__item" data-label="Our Studio">
+            <div class="img-placeholder"><span>📷</span><p>store.jpg</p></div>
+            <img src="assets/store.jpg" alt="Our Studio" onerror="this.style.display='none'" />
+          </div>
+          <div class="work-preview__item work-preview__item--wide" data-label="Bridal Lehenga">
+            <div class="img-placeholder"><span>📷</span><p>lehenga1.jpg</p></div>
+            <img src="assets/lehenga1.jpg" alt="Bridal Lehenga" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-preview__cta">
+          <button class="btn btn--outline" onclick="showSection('gallery')">View Full Gallery →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-block testimonials">
+      <div class="container">
+        <div class="sec-header">
+          <p class="sec-eyebrow">Customer Love</p>
+          <h2>What Our <em>Customers Say</em></h2>
+        </div>
+        <div class="testimonials__grid">
+          <div class="testimonial__card">
+            <div class="testimonial__stars">★★★★★</div>
+            <p>"The blouse Ruby ji stitched for my wedding was absolutely perfect. The fit was so accurate and the embroidery was stunning. Every guest was asking where I got it!"</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">P</div>
+              <div><strong>Priya Sharma</strong><span>Bridal Customer</span></div>
+            </div>
+          </div>
+          <div class="testimonial__card testimonial__card--featured">
+            <div class="testimonial__stars">★★★★★</div>
+            <p>"I have been getting my suits stitched here for 5 years. The quality and finishing is unmatched. No other tailor understands fit as well as Mahi Silai Studio!"</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">R</div>
+              <div><strong>Rekha Verma</strong><span>Regular Customer</span></div>
+            </div>
+          </div>
+          <div class="testimonial__card">
+            <div class="testimonial__stars">★★★★★</div>
+            <p>"Got my lehenga stitched for my sister's wedding. The work was delivered on time and looked exactly like the reference I gave. Highly recommend for bridal outfits!"</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">A</div>
+              <div><strong>Anjali Gupta</strong><span>Lehenga Customer</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-banner__inner">
+        <div class="cta-banner__text">
+          <h2>Ready for Your Perfect Fit?</h2>
+          <p>Walk into our studio or call us to book your personal appointment today.</p>
+        </div>
+        <div class="cta-banner__actions">
+          <button class="btn btn--white" onclick="showSection('contact')">Book Appointment</button>
+          <a href="tel:+919990687859" class="btn btn--outline-white">📞 Call Now</a>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- end #home -->
+
+
+  <!-- ══════════════════════════════════
+       PAGE: SERVICES
+  ══════════════════════════════════ -->
+  <section class="page" id="services">
+
+    <div class="page-banner page-banner--services">
+      <div class="page-banner__content">
+        <p class="sec-eyebrow" style="color:rgba(255,255,255,0.75)">What We Offer</p>
+        <h1>Our <em>Services</em></h1>
+        <p>Every stitch tells a story — let us tell yours.</p>
+      </div>
+      <div class="page-banner__shapes">
+        <div class="pb-shape pb-shape-1"></div>
+        <div class="pb-shape pb-shape-2"></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="container">
+
+        <div class="services__grid">
+
+          <div class="svc-card">
+            <div class="svc-card__icon" style="background: linear-gradient(135deg,#ff6eb4,#e91e8c)">✂️</div>
+            <div class="svc-card__body">
+              <h3>Ladies Suit Stitching</h3>
+              <p>Salwar-kameez, Palazzo suits, Anarkali sets and more — stitched to your exact measurements with care and precision.</p>
+              <ul class="svc-card__tags">
+                <li>Salwar Kameez</li>
+                <li>Palazzo Suits</li>
+                <li>Anarkali Sets</li>
+                <li>Co-ord Sets</li>
+                <li>Patiala Suit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="svc-card svc-card--featured">
+            <div class="svc-card__icon" style="background: linear-gradient(135deg,#fff,#ffd6ec)">🌺</div>
+            <div class="svc-card__body">
+              <h3>Blouse Designing & Stitching</h3>
+              <p>Our specialty! Backless, high neck, puff sleeve, mirror work, or heavily embroidered — the perfect crown for your saree.</p>
+              <ul class="svc-card__tags">
+                <li>Backless Blouses</li>
+                <li>Embroidered Blouses</li>
+                <li>Bridal Blouses</li>
+                <li>Saree Blouse Alteration</li>
+                <li>Designer Necklines</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="svc-card">
+            <div class="svc-card__icon" style="background: linear-gradient(135deg,#c026d3,#9d174d)">👑</div>
+            <div class="svc-card__body">
+              <h3>Lehenga Stitching</h3>
+              <p>Bridal and party lehengas crafted to perfection. Skirt, blouse and dupatta — all matched to your fabric and vision.</p>
+              <ul class="svc-card__tags">
+                <li>Bridal Lehengas</li>
+                <li>Party Lehengas</li>
+                <li>Chaniya Choli</li>
+                <li>Skirt & Choli Sets</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="svc-card">
+            <div class="svc-card__icon" style="background: linear-gradient(135deg,#f472b6,#db2777)">📐</div>
+            <div class="svc-card__body">
+              <h3>Fitting & Alterations</h3>
+              <p>Garment not fitting right? Our expert tailors alter it perfectly without compromising the design or fabric.</p>
+              <ul class="svc-card__tags">
+                <li>Size Alterations</li>
+                <li>Length Adjustments</li>
+                <li>Waist & Hip Fitting</li>
+                <li>Complete Redesign</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="svc-card svc-card--featured svc-card--featured-alt">
+            <div class="svc-card__icon" style="background: linear-gradient(135deg,#fce7f3,#fbcfe8)">💐</div>
+            <div class="svc-card__body">
+              <h3>Bridal & Special Occasions</h3>
+              <p>Your big day deserves the finest. We offer end-to-end bridal stitching — from consultation to the final draping session.</p>
+              <ul class="svc-card__tags">
+                <li>Bridal Lehenga</li>
+                <li>Bridal Blouse</li>
+                <li>Reception Outfit</li>
+                <li>Mehendi & Haldi Wear</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="svc-card">
+            <div class="svc-card__icon" style="background: linear-gradient(135deg,#ec4899,#be185d)">🪡</div>
+            <div class="svc-card__body">
+              <h3>Other Apparel</h3>
+              <p>From kurtis to western fusion wear — we stitch a range of garments blending tradition with contemporary style.</p>
+              <ul class="svc-card__tags">
+                <li>Kurtis & Tunics</li>
+                <li>Fusion Wear</li>
+                <li>Kids Outfits</li>
+                <li>Dupattas</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PROCESS -->
+        <div class="process">
+          <div class="sec-header">
+            <p class="sec-eyebrow">How It Works</p>
+            <h2>Our Simple <em>4-Step Process</em></h2>
+          </div>
+          <div class="process__track">
+            <div class="process__step">
+              <div class="process__bubble">01</div>
+              <div class="process__content">
+                <h4>Consultation</h4>
+                <p>Visit our studio. Discuss your design, occasion and fabric preferences with our expert.</p>
+              </div>
+            </div>
+            <div class="process__connector"></div>
+            <div class="process__step">
+              <div class="process__bubble">02</div>
+              <div class="process__content">
+                <h4>Measurement</h4>
+                <p>We take precise body measurements to ensure the perfect fit every time.</p>
+              </div>
+            </div>
+            <div class="process__connector"></div>
+            <div class="process__step">
+              <div class="process__bubble">03</div>
+              <div class="process__content">
+                <h4>Crafting</h4>
+                <p>Your outfit is carefully stitched with quality threads, fine detailing and expertise.</p>
+              </div>
+            </div>
+            <div class="process__connector"></div>
+            <div class="process__step">
+              <div class="process__bubble">04</div>
+              <div class="process__content">
+                <h4>Fitting & Delivery</h4>
+                <p>Try it on, we fine-tune if needed and hand over your perfect garment with care.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- end #services -->
+
+
+  <!-- ══════════════════════════════════
+       PAGE: GALLERY
+  ══════════════════════════════════ -->
+  <section class="page" id="gallery">
+
+    <div class="page-banner page-banner--gallery">
+      <div class="page-banner__content">
+        <p class="sec-eyebrow" style="color:rgba(255,255,255,0.75)">Portfolio</p>
+        <h1>Our <em>Gallery</em></h1>
+        <p>Each piece — a labour of love, a work of art.</p>
+      </div>
+      <div class="page-banner__shapes">
+        <div class="pb-shape pb-shape-1"></div>
+        <div class="pb-shape pb-shape-2"></div>
+      </div>
+    </div>
+
+    <div class="section-block gallery-section">
+      <div class="container">
+
+        <div class="gallery__filter">
+          <button class="filter-btn active" data-filter="all">All Work</button>
+          <button class="filter-btn" data-filter="blouse">Blouses</button>
+          <button class="filter-btn" data-filter="suit">Suits</button>
+          <button class="filter-btn" data-filter="lehenga">Lehenga</button>
+          <button class="filter-btn" data-filter="store">Studio</button>
+        </div>
+
+        <div class="gallery__grid" id="galleryGrid">
+
+          <div class="g-item g-item--tall" data-cat="blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse1.jpeg</p></div>
+            <img src="assets/blouse1.jpeg" alt="Designer Blouse" onerror="this.style.display='none'" />
+            <div class="g-item__label">Designer Blouse</div>
+          </div>
+
+          <div class="g-item" data-cat="blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse2.jpeg</p></div>
+            <img src="assets/blouse2.jpeg" alt="Embroidered Blouse" onerror="this.style.display='none'" />
+            <div class="g-item__label">Embroidered Blouse</div>
+          </div>
+
+          <div class="g-item" data-cat="suit">
+            <div class="img-placeholder"><span>📷</span><p>suit1.jpg</p></div>
+            <img src="assets/suit1.jpg" alt="Ladies Suit" onerror="this.style.display='none'" />
+            <div class="g-item__label">Ladies Suit</div>
+          </div>
+
+          <div class="g-item g-item--wide" data-cat="lehenga">
+            <div class="img-placeholder"><span>📷</span><p>lehenga1.jpg</p></div>
+            <img src="assets/lehenga1.jpg" alt="Bridal Lehenga" onerror="this.style.display='none'" />
+            <div class="g-item__label">Bridal Lehenga</div>
+          </div>
+
+          <div class="g-item" data-cat="blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse3.jpeg</p></div>
+            <img src="assets/blouse3.jpeg" alt="Bridal Blouse" onerror="this.style.display='none'" />
+            <div class="g-item__label">Bridal Blouse</div>
+          </div>
+
+          <div class="g-item g-item--tall" data-cat="blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse4.jpeg</p></div>
+            <img src="assets/blouse4.jpeg" alt="Back-neck Blouse" onerror="this.style.display='none'" />
+            <div class="g-item__label">Back-neck Blouse</div>
+          </div>
+
+          <div class="g-item" data-cat="store">
+            <div class="img-placeholder"><span>📷</span><p>store.jpg</p></div>
+            <img src="assets/store.jpg" alt="Our Studio" onerror="this.style.display='none'" />
+            <div class="g-item__label">Our Studio</div>
+          </div>
+
+          <div class="g-item" data-cat="suit">
+            <div class="img-placeholder"><span>📷</span><p>suit2.jpg</p></div>
+            <img src="assets/suit2.jpg" alt="Anarkali Set" onerror="this.style.display='none'" />
+            <div class="g-item__label">Anarkali Set</div>
+          </div>
+
+          <div class="g-item" data-cat="blouse">
+            <div class="img-placeholder"><span>📷</span><p>blouse5.jpeg</p></div>
+            <img src="assets/blouse5.jpeg" alt="Mirror Work Blouse" onerror="this.style.display='none'" />
+            <div class="g-item__label">Mirror Work Blouse</div>
+          </div>
+
+        </div>
+
+        <p class="gallery__note">✦ More designs available at our studio — visit us to see the full collection in person!</p>
+
+      </div>
+    </div>
+  </section><!-- end #gallery -->
+
+
+  <!-- ══════════════════════════════════
+       PAGE: CONTACT
+  ══════════════════════════════════ -->
+  <section class="page" id="contact">
+
+    <div class="page-banner page-banner--contact">
+      <div class="page-banner__content">
+        <p class="sec-eyebrow" style="color:rgba(255,255,255,0.75)">Find Us</p>
+        <h1>Get in <em>Touch</em></h1>
+        <p>We'd love to meet you and bring your outfit vision to life.</p>
+      </div>
+      <div class="page-banner__shapes">
+        <div class="pb-shape pb-shape-1"></div>
+        <div class="pb-shape pb-shape-2"></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="container">
+
+        <div class="contact__grid">
+
+          <!-- ── CONTACT INFO ── -->
+          <div class="contact__info">
+            <h2>Visit Our Studio</h2>
+            <p class="contact__sub">Come in for a consultation — no appointment needed during working hours.</p>
+
+            <!-- Address -->
+            <div class="contact__card">
+              <div class="contact__card-icon">📍</div>
+              <div>
+                <strong>Address</strong>
+                <p>11, Rudra Enclave 2, Chipyana<br/>Ghaziabad, UP – 201009</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact__card">
+              <div class="contact__card-icon">📞</div>
+              <div>
+                <strong>Phone / WhatsApp</strong>
+                <p><a href="tel:+919990687859">+91 99906 87859</a></p>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact__card">
+              <div class="contact__card-icon">📧</div>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:mahisilaistudio@gmail.com">mahisilaistudio@gmail.com</a></p>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="contact__card">
+              <div class="contact__card-icon">🕐</div>
+              <div>
+                <strong>Working Hours</strong>
+                <p>Monday – Sunday: 09:00 AM – 09:00 PM<br/>Sunday: Closed</p>
+              </div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="contact__socials">
+              <a href="https://wa.me/919990687859" class="social-btn social-btn--wa" target="_blank" rel="noopener">
+                💬 WhatsApp Us
+              </a>
+              <a href="https://instagram.com/mahisilaistudio" class="social-btn social-btn--ig" target="_blank" rel="noopener">
+                📸 Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- ── MAP ── -->
+          <div class="contact__map-wrap">
+            <div class="map-embed">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.076928926739!2d77.45498517630507!3d28.627456384309617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef77ff9b20af%3A0xf52eb4688159321b!2sMahi%20Silai%20Studio!5e0!3m2!1sen!2sin!4v1772283599045!5m2!1sen!2sin"
+                width="100%" height="380"
+                style="border:0; border-radius:12px;"
+                allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <p class="map-hint">⚠️ Replace the map <code>src</code> in <code>index.html</code> with your actual Google Maps embed URL.</p>
+
+            <!-- Quick Contact Boxes -->
+            <div class="quick-contact">
+              <a href="tel:+919990687859" class="quick-contact__box">
+                <span class="qc-icon">📞</span>
+                <div><strong>Call Us</strong><small>+91 98765 43210</small></div>
+              </a>
+              <a href="https://wa.me/919990687859" class="quick-contact__box quick-contact__box--green" target="_blank">
+                <span class="qc-icon">💬</span>
+                <div><strong>WhatsApp</strong><small>Chat Instantly</small></div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── ENQUIRY FORM ── -->
+        <div class="enquiry">
+          <div class="sec-header">
+            <p class="sec-eyebrow">Quick Enquiry</p>
+            <h2>Send Us a <em>Message</em></h2>
+            <p class="sec-sub">We'll get back to you within a few hours.</p>
+          </div>
+
+          <form class="form" onsubmit="handleForm(event)">
+            <div class="form__row">
+              <div class="form__group">
+                <label>Your Name *</label>
+                <input type="text" placeholder="e.g. Priya Sharma" required />
+              </div>
+              <div class="form__group">
+                <label>Phone Number *</label>
+                <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label>Service Required *</label>
+                <select required>
+                  <option value="">Select a service…</option>
+                  <option>Ladies Suit Stitching</option>
+                  <option>Blouse Designing & Stitching</option>
+                  <option>Lehenga Stitching</option>
+                  <option>Fitting & Alteration</option>
+                  <option>Bridal Outfit</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label>Email (optional)</label>
+                <input type="email" placeholder="you@email.com" />
+              </div>
+            </div>
+            <div class="form__group form__group--full">
+              <label>Your Message</label>
+              <textarea rows="4" placeholder="Tell us about your outfit idea, occasion, or any questions…"></textarea>
+            </div>
+            <div class="form__submit-row">
+              <button type="submit" class="btn btn--primary btn--lg">Send Enquiry ✦</button>
+              <p class="form__note">We respond within 24 hours. You can also WhatsApp us directly!</p>
+            </div>
+            <div class="form__success" id="formSuccess">
+              ✅ Thank you! We'll get back to you very soon.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- end #contact -->
+
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <div class="footer__logo">
+              <span class="footer__logo-icon">M</span>
+              <span class="footer__logo-name">Mahi Silai Studio</span>
+            </div>
+            <p>Bespoke stitching & designing for the modern Indian woman. Every stitch, a promise of perfection.</p>
+            <div class="footer__social">
+              <a href="https://wa.me/919990687859" target="_blank">💬</a>
+              <a href="https://instagram.com/mahisilaistudio" target="_blank">📸</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <h4>Quick Links</h4>
+            <a onclick="showSection('home')">Home</a>
+            <a onclick="showSection('services')">Services</a>
+            <a onclick="showSection('gallery')">Gallery</a>
+            <a onclick="showSection('contact')">Contact</a>
+          </div>
+          <div class="footer__col">
+            <h4>Services</h4>
+            <a>Ladies Suits</a>
+            <a>Blouse Stitching</a>
+            <a>Lehenga</a>
+            <a>Alterations</a>
+            <a>Bridal Wear</a>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <a href="tel:+919990687859">+91 99906 87859</a>
+            <a href="mailto:mahisilaistudio@gmail.com">mahisilaistudio@gmail.com</a>
+            <a>11, Rudra Enclave 2, Chipyana<br/>Ghaziabad, UP – 201009</a>
+            <a>Mon–Sun: 09AM – 09PM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2024 Mahi Silai Studio. All rights reserved.</p>
+        <p>Made with 🌸 for beautiful craftsmanship</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
