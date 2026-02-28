@@ -13,8 +13,6 @@ function showSection(id) {
   });
 
   window.scrollTo({ top: 0, behavior: 'instant' });
-
-  // Re-trigger animations for new section
   setTimeout(initScrollAnimations, 50);
 }
 
@@ -40,11 +38,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
     const filter = btn.dataset.filter;
     document.querySelectorAll('.g-item').forEach(item => {
-      const match = filter === 'all' || item.dataset.cat === filter;
-      item.classList.toggle('hidden', !match);
+      item.classList.toggle('hidden', filter !== 'all' && item.dataset.cat !== filter);
     });
   });
 });
@@ -52,17 +48,14 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 /* ── Contact Form → WhatsApp ────────────── */
 function handleForm(e) {
   e.preventDefault();
-
   const name    = document.getElementById('f-name').value.trim();
   const phone   = document.getElementById('f-phone').value.trim();
   const service = document.getElementById('f-service').value;
   const email   = document.getElementById('f-email').value.trim();
   const message = document.getElementById('f-message').value.trim();
 
-  // REPLACE with your WhatsApp number (91 + 10-digit number, no spaces or +)
-  const YOUR_WHATSAPP = '919990687859';
+  const YOUR_WHATSAPP = '919990687859'; // ✏️ Replace with your number
 
-  // Build a clean, readable WhatsApp message
   let text = 'Hello Mahi Silai Studio! \n\n';
   text += '*Name:* ' + name + '\n';
   text += '*Phone:* ' + phone + '\n';
@@ -71,8 +64,14 @@ function handleForm(e) {
   if (message) text += '\n*Message:*\n' + message;
   text += '\n\nPlease let me know the details. Thank you!';
 
-  const url = 'https://wa.me/' + YOUR_WHATSAPP + '?text=' + encodeURIComponent(text);
-  window.open(url, '_blank');
+  window.open('https://wa.me/' + YOUR_WHATSAPP + '?text=' + encodeURIComponent(text), '_blank');
+}
+
+/* ── Doorstep Booking → WhatsApp ─────────── */
+function bookDoorstep() {
+  const YOUR_WHATSAPP = '919990687859'; // ✏️ Replace with your number
+  const text = 'Hello Mahi Silai Studio! 🌸\n\nI am interested in your *Doorstep Service* — I would like to book a home visit for measurements and doorstep delivery.\n\nPlease let me know the available slots and details. Thank you!';
+  window.open('https://wa.me/' + YOUR_WHATSAPP + '?text=' + encodeURIComponent(text), '_blank');
 }
 
 /* ── Scroll Animations ──────────────────── */
@@ -87,8 +86,7 @@ const observer = new IntersectionObserver((entries) => {
 
 function initScrollAnimations() {
   const elements = document.querySelectorAll(
-    '.why__card, .svc-card, .testimonial__card, .contact__card, .process__step, ' +
-    '.g-item, .work-preview__item, .quick-contact__box'
+    '.why__card, .svc-card, .testimonial__card, .contact__card, .process__step, .g-item, .work-preview__item, .quick-contact__box'
   );
   elements.forEach((el, i) => {
     if (!el.classList.contains('visible')) {
@@ -99,8 +97,114 @@ function initScrollAnimations() {
   });
 }
 
-// Init on load
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+  buildLightbox();
+  attachLightboxClicks();
 });
+
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX — built entirely in JS
+═══════════════════════════════════════════ */
+
+function buildLightbox() {
+  const modal = document.createElement('div');
+  modal.id = 'lightbox';
+  modal.innerHTML = `
+    <div id="lb-backdrop"></div>
+    <div id="lb-box">
+      <button id="lb-close" title="Close">&#x2715;</button>
+      <button id="lb-prev">&#8592;</button>
+      <button id="lb-next">&#8594;</button>
+      <div id="lb-img-wrap">
+        <img id="lb-img" src="" alt="" />
+        <div id="lb-placeholder"><span>📷</span><p>Image not found — add file to assets/ folder</p></div>
+      </div>
+      <div id="lb-caption"></div>
+      <div id="lb-counter"></div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  document.getElementById('lb-backdrop').addEventListener('click', closeLightbox);
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', () => lightboxNav(-1));
+  document.getElementById('lb-next').addEventListener('click', () => lightboxNav(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('lb-open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'ArrowLeft')  lightboxNav(-1);
+  });
+}
+
+let lbItems = [];
+let lbIndex = 0;
+
+function attachLightboxClicks() {
+  // Gallery items
+  document.querySelectorAll('.g-item').forEach(el => {
+    el.style.cursor = 'zoom-in';
+    el.addEventListener('click', () => {
+      const allVisible = Array.from(document.querySelectorAll('#galleryGrid .g-item:not(.hidden)'));
+      lbItems = allVisible.map(item => {
+        const img = item.querySelector('img');
+        const lbl = item.querySelector('.g-item__label');
+        return { src: img ? img.getAttribute('src') : '', alt: img ? img.alt : '', label: lbl ? lbl.textContent.trim() : '' };
+      });
+      lbIndex = allVisible.indexOf(el);
+      showFrame();
+    });
+  });
+
+  // Home work-preview items
+  document.querySelectorAll('.work-preview__item').forEach(el => {
+    el.style.cursor = 'zoom-in';
+    el.addEventListener('click', () => {
+      const img = el.querySelector('img');
+      lbItems = [{ src: img ? img.getAttribute('src') : '', alt: img ? img.alt : '', label: el.dataset.label || '' }];
+      lbIndex = 0;
+      showFrame();
+    });
+  });
+}
+
+function showFrame() {
+  const item   = lbItems[lbIndex];
+  const lbImg  = document.getElementById('lb-img');
+  const ph     = document.getElementById('lb-placeholder');
+
+  lbImg.src = item.src;
+  lbImg.alt = item.alt;
+  lbImg.style.display = '';
+  ph.style.display = 'none';
+
+  // If image fails to load show placeholder
+  lbImg.onerror = function() {
+    lbImg.style.display = 'none';
+    ph.style.display = 'flex';
+  };
+
+  document.getElementById('lb-caption').textContent = item.label || item.alt;
+  document.getElementById('lb-counter').textContent = lbItems.length > 1 ? (lbIndex + 1) + ' / ' + lbItems.length : '';
+
+  const showNav = lbItems.length > 1;
+  document.getElementById('lb-prev').style.display = showNav ? 'flex' : 'none';
+  document.getElementById('lb-next').style.display = showNav ? 'flex' : 'none';
+
+  document.getElementById('lightbox').classList.add('lb-open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.body.style.overflow = '';
+}
+
+function lightboxNav(dir) {
+  lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+  showFrame();
+}
